@@ -1,17 +1,70 @@
-from re import S
+import re
 
 
 user_input = input("Enter the morse code: ")
-translation = ""
-morse_code = user_input.split()
-for element in morse_code:
-    if element == "...":
-        letter = "s"
-        translation += letter
+def get_translation(user_input):
+    translation = ""
+    if user_input.isalpha():
+        morse_code = user_input
+        for element in morse_code:
+            # try:
+            translation += val_list[key_list.index(element)]    
+            # except ValueError:
+            #     return False
+    else:
+        morse_code = user_input.split()
+        for element in morse_code:
+            # try:
+            translation += key_list[val_list.index(element)]
+            # except ValueError:
+            #     return False
+    return translation
+    
 
-    if element == "---":
-        letter = "o"
-        translation += letter
 
+morse_code_dict = {
+    ".-":"a",
+    "-...":"b",
+    "-.-.":"c",
+    "-..":"d",
+    ".":"e",
+    "..-.":"f",
+    "--.":"g",
+    "....":"h",
+    "..":"i",
+    ".---":"j",
+    "-.-":"k",
+    ".-..":"l",
+    "--":"m",
+    "-.":"n",
+    "---":"o",
+    ".--.":"p",
+    "--.-":"q",
+    ".-.":"r",
+    "...":"s",
+    "-":"t",
+    "..-":"u",
+    "...-":"v",
+    ".--":"w",
+    "-..-":"x",
+    "-.--":"y",
+    "--..":"z", 
+    ".----":"1",
+    "..---":"2",
+    "...--":"3",
+    "....-":"4",
+    ".....":"5",
+    "-....":"6",
+    "--...":"7",
+    "---..":"8",
+    "----.":"9",
+    "-----":"0",
+    ".-.-.-":".",
+    "..--..":",",
+    "--..--":"!",
+    "........":" "
+}
+key_list = [morse_code_dict.keys()]
+val_list = [morse_code_dict.values()]
 
-print(translation)
+print(get_translation(user_input))
